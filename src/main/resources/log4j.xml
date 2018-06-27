@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration>
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p %m%n" />
+        </layout>
+    </appender>
+    <appender name="APACHE" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="logs/apache.log" />
+        <param name="DatePattern" value="'.'yyyy-MM-dd" />
+        <param name="Append" value="true" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%-5p] [%d] [%t] [%c:%L] %m%n" />
+        </layout>
+    </appender>
+    <appender name="WARN" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="logs/warn.log" />
+        <param name="DatePattern" value="'.'yyyy-MM-dd" />
+        <param name="Append" value="true" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%-5p] [%d] [%t] [%c:%L] %m%n" />
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="levelMin" value="WARN" />
+            <param name="levelMax" value="ERROR" />
+        </filter>
+    </appender>
+    <appender name="DEBUG" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="logs/debug.log" />
+        <param name="DatePattern" value="'.'yyyy-MM-dd" />
+        <param name="Append" value="true" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%-5p] [%d] [%t] [%c] %m%n" />
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="levelMin" value="INFO" />
+            <param name="levelMax" value="INFO" />
+        </filter>
+    </appender>
+    <logger name="org.apache" additivity="false">
+        <level value="WARN" />
+        <appender-ref ref="APACHE" />
+    </logger>
+    <logger name="com.paratera.sgri.http" additivity="false">
+        <level value="WARN" />
+        <appender-ref ref="APACHE" />
+    </logger>
+    <logger name="com.paratera.sgri" additivity="false">
+        <level value="DEBUG" />
+        <appender-ref ref="DEBUG" />
+        <appender-ref ref="WARN" />
+        <appender-ref ref="CONSOLE" />
+    </logger>
+    <root>
+        <priority value="warn" />
+        <appender-ref ref="CONSOLE" />
+    </root>
+</log4j:configuration>

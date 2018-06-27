@@ -1,0 +1,40 @@
+<<<<<<< HEAD
+target/
+log/
+logs/
+!.mvn/wrapper/maven-wrapper.jar
+=======
+excel/
+target/
+!.mvn/wrapper/maven-wrapper.jar
+.settings
+.classpath
+.project
+logs/
+>>>>>>> 906d80425f7a4dd4cfc8ab9fdec5bc68e1c8f2eb
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+<<<<<<< HEAD
+.nb-gradle/
+=======
+.nb-gradle/
+>>>>>>> 906d80425f7a4dd4cfc8ab9fdec5bc68e1c8f2eb
